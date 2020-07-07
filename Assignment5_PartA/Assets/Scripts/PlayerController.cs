@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
     public Text countText;
-    public Text winText;
+    public GameObject panel;
     private static bool check;
     private Rigidbody rb;
     private int count;
@@ -24,9 +24,8 @@ public class PlayerController : MonoBehaviour
        
         count = 0;
         SetCountText();
-        winText.text = "";
         check = false;
-       
+       panel.SetActive(false);
 
     }
 
@@ -54,16 +53,13 @@ public class PlayerController : MonoBehaviour
                 count = count + 1;
                 SetCountText();
                 check = false;
-
             }
-
             else
             {
                 Debug.Log("particle");
                 collision.gameObject.transform.GetChild(1).GetComponent<ParticleSystem>().Play();
             
              }
-
         }
     }
 
@@ -72,7 +68,8 @@ public class PlayerController : MonoBehaviour
         countText.text = "Count: " + count.ToString();
         if (count >= Instantiation.PalindromeCount)
         {
-            winText.text = "You have Collected all "+ Instantiation.PalindromeCount + " Palindrome Cubes";
+           panel.transform.GetChild(0).GetComponent<Text>().text= "Congratulations! You have Collected all "+ Instantiation.PalindromeCount + " Palindrome Cubes";
+            panel.SetActive(true);
         }
     }
 

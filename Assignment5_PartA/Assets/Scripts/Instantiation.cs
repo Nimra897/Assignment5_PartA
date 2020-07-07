@@ -16,7 +16,6 @@ public class Instantiation : MonoBehaviour
     // Reference to the Prefab. Drag a Prefab into this field in the Inspector.
     public GameObject myPrefab;
     private Vector3 Cubes;
-    private Vector3 Txt;
     private float radius = 1;
     private int numCubes = 10;
     public static int PalindromeCount;
@@ -31,7 +30,7 @@ public class Instantiation : MonoBehaviour
     void Start()
     {
         int i = 0;
-        List<string> results = RandomString(9);
+        List<string> results = RandomString();
         while (numCubes > 0)
         {
             
@@ -68,7 +67,7 @@ public class Instantiation : MonoBehaviour
 
     }
 
-    public static List<string> RandomString(int length) {
+    public static List<string> RandomString() {
         int x;
        List<string> list_of_strings = new List<string>();
         for (int i = 0; i <= 10; i++)
